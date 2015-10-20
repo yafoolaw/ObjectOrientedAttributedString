@@ -10,26 +10,25 @@
 
 @implementation ParagraphAttribute
 
-- (NSString*)attributeName {
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        
+        self.paragraphStyle = [NSMutableParagraphStyle new];
+        self.paragraphStyle.lineSpacing      = 4.f;
+        self.paragraphStyle.paragraphSpacing = 10.f;
+    }
+    return self;
+}
+
+- (NSString *)attributeName {
     
     return NSParagraphStyleAttributeName;
 }
 
-
 - (id)attributeValue {
-    
-    if (self.m_paragraphStyle) {
         
-        return self.m_paragraphStyle;
-        
-    } else {
-        
-        NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
-        paragraphStyle.lineSpacing      = 4;
-        paragraphStyle.paragraphSpacing = 6;
-        
-        return paragraphStyle;
-    }
+    return self.paragraphStyle;
 }
 
 @end
